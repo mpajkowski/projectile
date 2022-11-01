@@ -4206,7 +4206,7 @@ installed to work."
    (list (projectile--read-search-string-with-default
           (format "Ripgrep %ssearch for" (if current-prefix-arg "regexp " "")))
          current-prefix-arg))
-  (let ((args (mapcar (lambda (val) (concat "--glob !" val))
+  (let ((args (mapcar (lambda (val) (concat "--glob !" (shell-quote-argument val)))
                       (append projectile-globally-ignored-files
                               projectile-globally-ignored-directories))))
     ;; we rely on the external packages ripgrep and rg for the actual search
